@@ -76,9 +76,39 @@ class TicTacToe
     self.play_position(player, self.get_position)
     self.display
   end
+
+  def row_win?
+    3.times do |i|
+      unless @grid[i][1] == SYMBOLS[:player0]
+        return true if @grid[i][0] == @grid[i][1] && @grid[i][1] == @grid[i][2]
+      end
+    end
+    false
+  end
+
+  def column_win?
+    3.times do |i|
+      unless @grid[1][i] == SYMBOLS[:player0]
+        return true if @grid[0][i] == @grid[1][i] && @grid[1][i] == @grid[2][i]
+      end
+    end
+    false
+  end
+
+  def diagonal_win?
+    unless @grid[1][1] == SYMBOLS[:player0]
+      return true if @grid[0][0] == @grid[1][1] && @grid[1][1] == @grid[2][2]
+      return true if @grid[2][0] == @grid[1][1] && @grid[1][i] == @grid[0][2]
+    end
+    false
+  end
   
   def win?
-    false
+    self.row_win? || self.column_win? || self.diagonal_win?
+  end
+
+  def tie?
+    @grid.flatten.none? {|char| char == SYMBOLS[:player0]}
   end
 end
 
