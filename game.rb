@@ -1,5 +1,3 @@
-require 'pry'
-
 class TicTacToe
   SYMBOLS = {player0: ' ',
              player1: 'X',
