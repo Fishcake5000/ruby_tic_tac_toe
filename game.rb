@@ -44,12 +44,14 @@ class TicTacToe
   end
 
   def display
+    3.times {puts}
     puts self.line_separator
     @grid.each do |line|
       line.each {|char| print "| #{char} "}
       puts "|"
       puts self.line_separator
     end
+    puts
   end
 
   def get_position
@@ -71,6 +73,7 @@ class TicTacToe
   end
 
   def play_round(player)
+    puts "Your turn #{@player_names[player]}"
     self.play_position(player, self.get_position)
     self.display
   end
