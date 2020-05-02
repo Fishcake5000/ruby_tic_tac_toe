@@ -14,10 +14,10 @@ class TicTacToe
   def play
     self.display
     player = :player2
-    begin
+    until self.win? || self.tie?
       player = self.switch_player(player)
       self.play_round(player)
-    end until self.win? || self.tie?
+    end 
     puts (self.tie?) ? self.display_tie : self.display_winner(player)
   end
 
